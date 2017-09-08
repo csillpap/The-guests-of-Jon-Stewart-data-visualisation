@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--sets up a responsive designed page-->
+
+        <title>The Daily Show</title>
+
+        <link rel="stylesheet" href="{{ url_for ('static',
+        filename='lib/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ url_for ('static',
+        filename='lib/css/keen-dashboards.css')}}">
+        <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
+
+    </head>
+
+
+    <body class="application">
+
+        <!-- Navbar -->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="./">The Guests of Jon Stewart in the Daily Show</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Javascript files -->
+        <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
+
+
+    </body>
+
+</html>
