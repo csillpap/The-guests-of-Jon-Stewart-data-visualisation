@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 from pymongo import MongoClient
 import json
 
@@ -11,8 +12,11 @@ COLLECTION_NAME = 'guests_data'
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def index():
+    """
+    A Flask view for the main page
+    """
+    return render_template("index.html")
 
 
 @app.route("/DailyShow/guests_data")
@@ -42,4 +46,3 @@ def dailyshow_guests():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
