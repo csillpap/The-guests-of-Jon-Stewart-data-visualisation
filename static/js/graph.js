@@ -21,15 +21,32 @@ function makeGraphs(error, projectsJson) {
    var yearDim = ndx.dimension(function (d) {
        return d["YEAR"];
    });
+   var occupationGroupDim = ndx.dimension(function (d) {
+      return d["Group"];
+   });
 
 
    //Calculate metrics
    var yearGroup = yearDim.group();
+   var occupationGroup = occupationGroupDim.group();
+
+
+   // Charts
+   var occupationGroupChart = dc.pieChart("#occupation-group-chart");
 
 
    selectField = dc.selectMenu('#menu-select')
        .dimension(yearDim)
        .group(yearGroup);
+
+
+   occupationGroupChart
+       .height(350)
+       .radius(130)
+       .innerRadius(20)
+       .transitionDuration(1500)
+       .dimension(occupationGroupDim)
+       .group(occupationGroup);
 
 
    dc.renderAll();
