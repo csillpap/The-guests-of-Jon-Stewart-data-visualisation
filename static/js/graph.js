@@ -24,15 +24,20 @@ function makeGraphs(error, projectsJson) {
    var occupationGroupDim = ndx.dimension(function (d) {
       return d["Group"];
    });
+   var specificOccupationDim = ndx.dimension(function (d) {
+      return d["GoogleKnowlege_Occupation"];
+   });
 
 
    //Calculate metrics
    var yearGroup = yearDim.group();
    var occupationGroup = occupationGroupDim.group();
+   var specificOccupations = specificOccupationDim.group();
 
 
    // Charts
    var occupationGroupChart = dc.pieChart("#occupation-group-chart");
+   var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
 
 
    selectField = dc.selectMenu('#menu-select')
@@ -47,6 +52,16 @@ function makeGraphs(error, projectsJson) {
        .transitionDuration(1500)
        .dimension(occupationGroupDim)
        .group(occupationGroup);
+
+
+   specificOccupationChart
+       .width(500)
+       .height(350)
+       .rowsCap(10)
+       .othersGrouper(false)
+       .dimension(specificOccupationDim)
+       .group(specificOccupations)
+       .xAxis().ticks(4);
 
 
    dc.renderAll();
