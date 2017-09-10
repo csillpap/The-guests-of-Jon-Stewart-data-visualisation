@@ -22,13 +22,16 @@ function makeGraphs(error, projectsJson) {
        return d["YEAR"];
    });
    var occupationGroupDim = ndx.dimension(function (d) {
-      return d["Group"];
+       return d["Group"];
    });
    var specificOccupationDim = ndx.dimension(function (d) {
-      return d["GoogleKnowlege_Occupation"];
+       return d["GoogleKnowlege_Occupation"];
    });
    var guestDim = ndx.dimension(function (d) {
-      return d["Raw_Guest_List"];
+       return d["Raw_Guest_List"];
+   });
+   var guestDim2 = ndx.dimension(function (d) {
+       return d["Raw_Guest_List"];
    });
 
 
@@ -42,6 +45,7 @@ function makeGraphs(error, projectsJson) {
    // Charts
    var occupationGroupChart = dc.pieChart("#occupation-group-chart");
    var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
+   guest_datatable = dc.dataTable('#guest-datatable');
 
 
    selectField = dc.selectMenu('#menu-select')
@@ -71,6 +75,20 @@ function makeGraphs(error, projectsJson) {
        .group(specificOccupations)
        .xAxis().ticks(4);
 
+    guest_datatable
+      .dimension(guestDim2)
+      .group(function(d) {return d["Raw_Guest_List"];})
+      .columns([
+          {
+              label: "Show",
+              format: function(d) {return d["Show"]}
+          },
+          {
+              label: "Occupation",
+              format: function(d) {return d["GoogleKnowlege_Occupation"]}
+          }
+      ])
+      .size(DailyShowGuests_data.length);
 
    dc.renderAll();
 }
