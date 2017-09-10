@@ -36,6 +36,9 @@ function makeGraphs(error, projectsJson) {
    var showDim = ndx.dimension(function (d) {
        return d["Show"];
    });
+   var showDim2 = ndx.dimension(function (d) {
+       return d["Show"];
+   });
 
 
    //Calculate metrics
@@ -50,6 +53,7 @@ function makeGraphs(error, projectsJson) {
    var occupationGroupChart = dc.pieChart("#occupation-group-chart");
    var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
    guest_datatable = dc.dataTable('#guest-datatable');
+   show_datatable = dc.dataTable("#show-datatable");
 
 
    selectField = dc.selectMenu('#menu-select')
@@ -90,6 +94,21 @@ function makeGraphs(error, projectsJson) {
            {
                label: "Show",
                format: function(d) {return d["Show"]}
+           },
+           {
+               label: "Occupation",
+               format: function(d) {return d["GoogleKnowlege_Occupation"]}
+           }
+       ])
+       .size(DailyShowGuests_data.length);
+
+   show_datatable
+       .dimension(showDim2)
+       .group(function(d) {return d["Show"];})
+       .columns([
+           {
+               label: "Guest",
+               format: function(d) {return d["Raw_Guest_List"]}
            },
            {
                label: "Occupation",
