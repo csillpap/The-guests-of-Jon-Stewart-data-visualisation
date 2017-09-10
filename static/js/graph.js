@@ -27,12 +27,16 @@ function makeGraphs(error, projectsJson) {
    var specificOccupationDim = ndx.dimension(function (d) {
       return d["GoogleKnowlege_Occupation"];
    });
+   var guestDim = ndx.dimension(function (d) {
+      return d["Raw_Guest_List"];
+   });
 
 
    //Calculate metrics
    var yearGroup = yearDim.group();
    var occupationGroup = occupationGroupDim.group();
    var specificOccupations = specificOccupationDim.group();
+   var guestGroup = guestDim.group();
 
 
    // Charts
@@ -43,6 +47,10 @@ function makeGraphs(error, projectsJson) {
    selectField = dc.selectMenu('#menu-select')
        .dimension(yearDim)
        .group(yearGroup);
+
+   selectField = dc.selectMenu('#guest-select')
+       .dimension(guestDim)
+       .group(guestGroup);
 
 
    occupationGroupChart
