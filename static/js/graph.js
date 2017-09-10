@@ -83,6 +83,7 @@ function makeGraphs(error, projectsJson) {
        .height(350)
        .rowsCap(10)
        .othersGrouper(false)
+       .elasticX(true)
        .dimension(specificOccupationDim)
        .group(specificOccupations)
        .xAxis().ticks(4);
