@@ -75,7 +75,7 @@ function makeGraphs(error, projectsJson) {
    var occupationGroupChart = dc.pieChart("#occupation-group-chart");
    var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
    var topOccupationGroupsChart = dc.seriesChart("#top-occupation-groups-chart");
-   var totalNumberOfGuestsND = dc.numberDisplay("#number-total-guests-nd");
+   var totalNumberOfGuestsND = dc.numberDisplay("#number-guests-nd");
    guest_datatable = dc.dataTable('#guest-datatable');
    show_datatable = dc.dataTable("#show-datatable");
 
