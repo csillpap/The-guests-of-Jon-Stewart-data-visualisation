@@ -71,12 +71,24 @@ function makeGraphs(error, projectsJson) {
 	var time_fields = time_field.group().reduce( 	addT, remT, ini );
 	var extent = d3.extent(GroupYearValue, function(d){return d.year;});
 
-   // Charts
+
    var occupationGroupChart = dc.pieChart("#occupation-group-chart");
    var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
    var topOccupationGroupsChart = dc.seriesChart("#top-occupation-groups-chart");
    guest_datatable = dc.dataTable('#guest-datatable');
    show_datatable = dc.dataTable("#show-datatable");
+
+
+   // function to count bins in a specific group
+    function count_bins(group) {
+        return {
+            value: function () {
+                return group.all().filter(function (kv) {
+                    return kv.value > 0;
+                }).length;
+            }
+        };
+    }
 
 
    selectField = dc.selectMenu('#menu-select')
