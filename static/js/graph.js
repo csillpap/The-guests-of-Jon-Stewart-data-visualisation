@@ -75,6 +75,7 @@ function makeGraphs(error, projectsJson) {
    var occupationGroupChart = dc.pieChart("#occupation-group-chart");
    var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
    var topOccupationGroupsChart = dc.seriesChart("#top-occupation-groups-chart");
+   var totalNumberOfGuestsND = dc.numberDisplay("#number-total-guests-nd");
    guest_datatable = dc.dataTable('#guest-datatable');
    show_datatable = dc.dataTable("#show-datatable");
 
@@ -102,6 +103,13 @@ function makeGraphs(error, projectsJson) {
    selectField = dc.selectMenu("#show-select")
        .dimension(showDim)
        .group(showGroup);
+
+   totalNumberOfGuestsND
+        .formatNumber(d3.format("d"))
+        .valueAccessor(function (d) {
+            return d;
+        })
+        .group(count_bins(guestGroup));
 
 
    occupationGroupChart
