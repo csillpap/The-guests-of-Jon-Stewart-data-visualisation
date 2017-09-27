@@ -76,6 +76,7 @@ function makeGraphs(error, projectsJson) {
    var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
    var topOccupationGroupsChart = dc.seriesChart("#top-occupation-groups-chart");
    var totalNumberOfGuestsND = dc.numberDisplay("#number-guests-nd");
+   var totalNumberOfShowsND = dc.numberDisplay("#number-shows-nd");
    guest_datatable = dc.dataTable('#guest-datatable');
    show_datatable = dc.dataTable("#show-datatable");
 
@@ -110,6 +111,13 @@ function makeGraphs(error, projectsJson) {
             return d;
         })
         .group(count_bins(guestGroup));
+
+   totalNumberOfShowsND
+        .formatNumber(d3.format("d"))
+        .valueAccessor(function (d) {
+            return d;
+        })
+        .group(count_bins(showGroup));
 
 
    occupationGroupChart
