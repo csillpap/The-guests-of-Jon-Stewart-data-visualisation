@@ -79,6 +79,29 @@ function makeGraphs(error, projectsJson) {
    show_datatable = dc.dataTable("#show-datatable");
 
 
+   // function to remove data where there were no guests present in the show
+    function remove_bins_without_guests(source_group) {
+        return {
+            all:function () {
+                return source_group.all().filter(function(d) {
+                    return d.key !== "(None)" && d.key !== "(no guest)"
+                        && d.key !== "no guest" && d.key !== "none"
+                        && d.key !== "No guest" && d.key !== "No Guest"
+                        && d.key !== "None" && d.key !== "Greatest Millennium Special"
+                        && d.key !== "Third Anniversary Special" && d.key !== "The Daily Show Summer Spectacular"
+                        && d.key !== "Tales of Survival with Vance DeGeneres" && d.key !== "Fourth Anniversary Special"
+                        && d.key !== "Campaign Trail to the Road to the White House Mo Rocca, Vance DeGeneres"
+                        && d.key !== "Road to Washington Special" && d.key !== "Matt Walsh Goes To Hawaii"
+                        && d.key !== "Who are the Daily Show? Special" && d.key !== "Looking Beyond The Show"
+                        && d.key !== "Iraq - A Look Baq (or how we learned to stop reporting and love the war)"
+                        && d.key !== "Again, A Look Back" && d.key !== "I'm a Correspondent, Please Don't Fire Me!"
+                        && d.key !== "John Bambenek" && d.key !== "Indecision 2008 Live Election Night Special"
+                        && d.key !== "Election Night: This Ends Now"
+                });
+            }
+        };
+    }
+
    // function to count bins in a specific group
     function count_bins(group) {
         return {
@@ -108,7 +131,7 @@ function makeGraphs(error, projectsJson) {
         .valueAccessor(function (d) {
             return d;
         })
-        .group(count_bins(guestGroup));
+        .group(count_bins(remove_bins_without_guests(guestGroup))); // first remove unnecessary bins, then count the bins
 
    totalNumberOfShowsND
         .formatNumber(d3.format("d"))
