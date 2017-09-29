@@ -70,8 +70,8 @@ function makeGraphs(error, projectsJson) {
 
 
 	// Charts
-   var occupationGroupChart = dc.pieChart("#occupation-group-chart");
-   var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
+   occupationGroupChart = dc.pieChart("#occupation-group-chart");
+   specificOccupationChart = dc.rowChart("#specific-occupation-chart");
    var topOccupationGroupsChart = dc.seriesChart("#top-occupation-groups-chart");
    var totalNumberOfGuestsND = dc.numberDisplay("#number-guests-nd");
    var totalNumberOfShowsND = dc.numberDisplay("#number-shows-nd");
