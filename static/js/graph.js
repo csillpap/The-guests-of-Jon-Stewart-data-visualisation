@@ -39,9 +39,6 @@ function makeGraphs(error, projectsJson) {
    var showDim2 = ndx.dimension(function (d) {
        return d["Show"];
    });
-   var occupationGroupWithYearDim = ndx.dimension(function(d) {
-			return [d["YEAR"],d["Group"]];
-	});
 
 
    //Calculate metrics
@@ -50,28 +47,29 @@ function makeGraphs(error, projectsJson) {
    var specificOccupations = specificOccupationDim.group();
    var guestGroup = guestDim.group();
    var showGroup = showDim.group();
-   var occupationGroupByYear = occupationGroupWithYearDim.group();
 
-   var resultGroupByYear = occupationGroupByYear.all();
 
-   var GroupYearValue = [];
-   var j = 0;
-   for (var i in resultGroupByYear) {
-		if (resultGroupByYear[i].key[1]==="Acting" || resultGroupByYear[i].key[1]==="Media" || resultGroupByYear[i].key[1]==="Politician") {
-			GroupYearValue[j] = {year: resultGroupByYear[i].key[0], group: resultGroupByYear[i].key[1], value: resultGroupByYear[i].value };
+   // filter DailyShowGuests_data for Acting, Media, Politician
+	var DailyShowGuests_data_filtered = [];
+	var j = 0;
+	for (var k in DailyShowGuests_data) {
+		if (DailyShowGuests_data[k].Group==="Acting" || DailyShowGuests_data[k].Group==="Media" || DailyShowGuests_data[k].Group==="Politician") {
+			DailyShowGuests_data_filtered[j] = {YEAR: DailyShowGuests_data[k].YEAR, Group: DailyShowGuests_data[k].Group };
 			j++;
 		}
 	}
+	// create a new crossfilter instance for the filtered data
+	var cf = crossfilter(DailyShowGuests_data_filtered);
 
-    var	addT = function(p, d){ return p + d.value;};
-	var remT = function(p, d){ return p - d.value;};
-	var ini = function(){ return 0;};
-	var cf = crossfilter(GroupYearValue);
-	var time_field = cf.dimension(function(d) { return [d.year, d.group];});
-	var time_fields = time_field.group().reduce( 	addT, remT, ini );
-	var extent = d3.extent(GroupYearValue, function(d){return d.year;});
+	// create dimension, group and values to be used in the series chart for Acting, Media, Politician
+	var topOccupationByYearDim = cf.dimension(function(d) {
+			return [d.YEAR,d.Group];
+	});
+	var topOccupationByYearGroup = topOccupationByYearDim.group();
+	var extent = d3.extent(DailyShowGuests_data_filtered, function(d){return d.YEAR;});
 
 
+	// Charts
    var occupationGroupChart = dc.pieChart("#occupation-group-chart");
    var specificOccupationChart = dc.rowChart("#specific-occupation-chart");
    var topOccupationGroupsChart = dc.seriesChart("#top-occupation-groups-chart");
@@ -148,8 +146,8 @@ function makeGraphs(error, projectsJson) {
 		.yAxisLabel("Count")
 		.clipPadding(10)
 		.elasticY(true)
-		.dimension(time_field)
-		.group(time_fields)
+		.dimension(topOccupationByYearDim)
+		.group(topOccupationByYearGroup)
 		.seriesAccessor(function(d) { return  d.key[1]; })
 		.keyAccessor(function(d) {return d.key[0];})
 		.renderHorizontalGridLines(true)
