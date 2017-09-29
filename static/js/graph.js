@@ -91,15 +91,15 @@ function makeGraphs(error, projectsJson) {
     }
 
 
-   selectField = dc.selectMenu('#menu-select')
+   selectYear = dc.selectMenu('#year-select')
        .dimension(yearDim)
        .group(yearGroup);
 
-   selectField = dc.selectMenu('#guest-select')
+   selectGuest = dc.selectMenu('#guest-select')
        .dimension(guestDim)
        .group(guestGroup);
 
-   selectField = dc.selectMenu("#show-select")
+   selectShow = dc.selectMenu("#show-select")
        .dimension(showDim)
        .group(showGroup);
 
