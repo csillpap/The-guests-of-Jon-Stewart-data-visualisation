@@ -16,7 +16,12 @@ def index():
     """
     A Flask view for the main page
     """
-    return render_template("index.html")
+    return render_template("home.html")
+
+
+@app.route('/graphs')
+def about():
+   return render_template('graphs.html')
 
 
 @app.route("/DailyShow/guests_data")
