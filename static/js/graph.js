@@ -48,7 +48,6 @@ function makeGraphs(error, projectsJson) {
    var guestGroup = guestDim.group();
    var showGroup = showDim.group();
 
-
    // filter DailyShowGuests_data for Acting, Media, Politician
 	var DailyShowGuests_data_filtered = [];
 	var j = 0;
@@ -97,6 +96,9 @@ function makeGraphs(error, projectsJson) {
                         && d.key !== "Again, A Look Back" && d.key !== "I'm a Correspondent, Please Don't Fire Me!"
                         && d.key !== "John Bambenek" && d.key !== "Indecision 2008 Live Election Night Special"
                         && d.key !== "Election Night: This Ends Now"
+                        && d.key !== "Stephen Colbert as Al Sharpton (Sharpton had been the scheduled guest)"
+                        /* remove Stephen Colbert as Al Sharpton from the guest bins, so the count_bins function does not add it to the number of guests, as
+                            we already have Stephen Colbert and Al Sharpton seperately */
                 });
             }
         };
