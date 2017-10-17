@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+body.application {
+    padding: 60px 0;
+}
+
+#page {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#text-container {
+    text-align: center;
+    font-family: "Josefin Sans";
+    color: white;
+    height: 600px;
+    padding: 60px 30px;
+    line-height: 1.8;
+    background-color: #001749;
+}
+
+.btn > a:hover {
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: white;
+}
+
+
