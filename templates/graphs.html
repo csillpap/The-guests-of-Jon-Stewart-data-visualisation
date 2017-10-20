@@ -3,6 +3,10 @@
 
     <div class="container">
 
+            <div>
+                <button class="intro_button" type="button" autofocus onclick="introJs().start();">Click to Start Tour!</button>
+            </div>
+
             <div class="row">
 
                 <!-- year select -->
@@ -12,7 +16,7 @@
                             Year
                         </div>
                         <div class="chart-stage">
-                            <div id="year-select"></div>
+                            <div id="year-select" data-step="1" data-intro="Select a year to filter the related data" style="font-weight: normal" data-position="right"></div>
                         </div>
                     </div>
                 </div>
@@ -25,7 +29,7 @@
                             Total Number of Guests
                         </div>
                         <div class="chart-stage">
-                            <div id="number-guests-nd"></div>
+                            <div id="number-guests-nd" data-step="2" data-intro="Displays the total number of guests" style="font-weight: normal" data-position="right"></div>
                         </div>
                     </div>
                 </div>
@@ -38,7 +42,7 @@
                             Total Number of Shows
                         </div>
                         <div class="chart-stage">
-                            <div id="number-shows-nd"></div>
+                            <div id="number-shows-nd" data-step="3" data-intro="Displays the total number of shows" style="font-weight: normal" data-position="right"></div>
                         </div>
                     </div>
                 </div>
@@ -56,7 +60,7 @@
                             <a class="reset" href="javascript:occupationGroupChart.filterAll();dc.redrawAll();">reset</a>
                         </div>
                         <div class="chart-stage">
-                            <div id="occupation-group-chart"></div>
+                            <div id="occupation-group-chart" data-step="4" data-intro="Shows the occupation groups of the guests. Click on the slices to filter the data." style="font-weight: normal" data-position="right"></div>
                         </div>
                     </div>
                 </div>
@@ -70,7 +74,7 @@
                             <a class="reset" href="javascript:specificOccupationChart.filterAll();dc.redrawAll();">reset</a>
                         </div>
                         <div class="chart-stage">
-                            <div id="specific-occupation-chart"></div>
+                            <div id="specific-occupation-chart" data-step="5" data-intro="Shows the top ten occupations. Click on the rows to filter the data." style="font-weight: normal" data-position="left"></div>
                         </div>
                     </div>
                 </div>
@@ -88,7 +92,7 @@
                             <a class="reset" href="javascript:topGuestsChart.filterAll();dc.redrawAll();">reset</a>
                         </div>
                         <div class="chart-stage">
-                            <div id="top-guests-chart"></div>
+                            <div id="top-guests-chart" data-step="6" data-intro="Shows the top ten guests. Click on the rows to filter the data" style="font-weight: normal" data-position="top"></div>
                         </div>
                     </div>
                 </div>
@@ -102,7 +106,7 @@
                             <a class="reset" href="javascript:guestsByYearChart.filterAll();dc.redrawAll();">reset</a>
                         </div>
                         <div class="chart-stage">
-                            <div id="guests-by-year-chart"></div>
+                            <div id="guests-by-year-chart" data-step="7" data-intro="Displays the number of guests. Click on the orange area and drag the mouse to choose a section and filter the data." style="font-weight: normal" data-position="top"></div>
                         </div>
                     </div>
                 </div>
@@ -116,10 +120,10 @@
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="chart-wrapper">
                         <div class="chart-title">
-                            Show the 3 top occupational groups
+                            The 3 top occupational groups
                         </div>
                         <div class="chart-stage">
-                            <div id="top-occupation-groups-chart"></div>
+                            <div id="top-occupation-groups-chart" data-step="8" data-intro="Shows how the top 3 occupation groups were changing over the years. This chart is only for information purposes, does not interact with the other charts." style="font-weight: normal" data-position="top"></div>
                         </div>
                     </div>
                 </div>
@@ -137,7 +141,7 @@
                             <a class="reset" href="javascript:selectGuest.filterAll();dc.redrawAll();">reset</a>
                         </div>
                         <div class="chart-stage">
-                            <div id="guest-select"></div>
+                            <div id="guest-select" data-step="9" data-intro="Select a guest to see their occupation and the show they appeared in." style="font-weight: normal" data-position="top"></div>
                         </div>
                     </div>
                     <div class="chart-wrapper col-sm-12">
@@ -154,7 +158,7 @@
                             <a class="reset" href="javascript:selectShow.filterAll();dc.redrawAll();">reset</a>
                         </div>
                         <div class="chart-stage">
-                            <div id="show-select"></div>
+                            <div id="show-select" data-step="10" data-intro="Select a show to see who appeared in it and what their occupation was." style="font-weight: normal" data-position="top"></div>
                         </div>
                     </div>
                     <div class="chart-wrapper col-sm-12">
