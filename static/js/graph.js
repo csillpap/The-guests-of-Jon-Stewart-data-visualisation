@@ -184,15 +184,15 @@ function makeGraphs(error, projectsJson) {
        .group(function(d) {return d["Raw_Guest_List"];})
        .columns([
            {
-               label: "Show",
+               label: "Show featuring the guest",
                format: function(d) {return d["Show"]}
            },
            {
-               label: "Occupation",
+               label: "Occupation of the guest",
                format: function(d) {return d["GoogleKnowlege_Occupation"]}
            }
        ])
-       .size(DailyShowGuests_data.length);
+       .size(25);
 
    show_datatable
        .dimension(showDim2)
@@ -203,11 +203,11 @@ function makeGraphs(error, projectsJson) {
                format: function(d) {return d["Raw_Guest_List"]}
            },
            {
-               label: "Occupation",
+               label: "Occupation of the guest",
                format: function(d) {return d["GoogleKnowlege_Occupation"]}
            }
        ])
-       .size(DailyShowGuests_data.length);
+       .size(25);
 
    dc.renderAll();
 }

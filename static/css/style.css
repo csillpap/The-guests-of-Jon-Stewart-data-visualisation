@@ -3,7 +3,8 @@
 }
 
 body.application {
-    padding: 60px 0;
+    padding-top: 60px;
+    background-color: #001749;
 }
 
 #page {
@@ -29,4 +30,19 @@ body.application {
     background-color: white;
 }
 
+.dc-select-menu,
+.number-display {
+    font-size: 25px;
+}
 
+a.reset {
+    float: right;
+}
+
+td.dc-table-label {
+    display: none;
+}
+
+td, th {
+    padding: 10px;
+}

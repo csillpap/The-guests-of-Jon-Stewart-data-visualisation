@@ -4,16 +4,23 @@
 
 
         <div id="home-page" class="row">
-            <div id="text-container" class="col-md-3">
+
+            <div class="col-lg-9 col-md-9 col-sm-12">
+                <img class="img-responsive" src="{{url_for('static', filename='images/jon-stewart.jpg') }}">
+                <!-- Image URL: https://upload.wikimedia.org/wikipedia/commons/e/e9/Defense.gov_News_Photo_110203-N-0696M-105_-_Chairman_of_the_Joint_Chiefs_of_Staff_Adm._Mike_Mullen%2C_U.S._Navy%2C_appears_on_The_Daily_Show_with_Jon_Stewart_in_New_York_City_on_Feb._3%2C_2011.jpg
+                    Page URL: https://commons.wikimedia.org/wiki/File%3ADefense.gov_News_Photo_110203-N-0696M-105_-_Chairman_of_the_Joint_Chiefs_of_Staff_Adm._Mike_Mullen%2C_U.S._Navy%2C_appears_on_The_Daily_Show_with_Jon_Stewart_in_New_York_City_on_Feb._3%2C_2011.jpg
+                    Attribution: By English: Petty Officer 1st Class Chad J. McNeeley, U.S. Navy (www.defense.gov) [Public domain], via Wikimedia Commons-->
+            </div>
+
+            <div id="text-container" class="col-lg-3 col-md-3 col-sm-12">
                 <p>Do you know this guy on the right? Yes, he is Jon Stewart, the former host of The Daily Show.
                     His career would be so exciting to talk about, but what we are more interested in now,
                     is the guests he interviewed on the show. We are talking about more than 2000 guests,
                     covering more than 300 job titles. Sounds really fascinating, right?</p>
                 <p>So let’s have a look at the data now!</p>
+                <button class="btn"><a href="/graphs"><strong>CLICK HERE</strong></a></button>
             </div>
 
         </div>
 
-
-    <a href="/graphs"><h1>graphs</h1></a>
 {% endblock %}
