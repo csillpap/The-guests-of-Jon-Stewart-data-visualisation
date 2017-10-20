@@ -187,8 +187,11 @@ function makeGraphs(error, projectsJson) {
        .group(guests_by_year)
        .brushOn(true)
        .renderArea(true)
+       .colors(["#EB773D"])
        .x(d3.scale.linear().domain(extent2))
        .y(d3.scale.linear().domain([100, 200]))
+       .renderHorizontalGridLines(true)
+       .renderVerticalGridLines(true)
        .yAxisLabel("Number of guests");
 
    topOccupationGroupsChart

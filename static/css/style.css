@@ -30,6 +30,14 @@ body.application {
     background-color: white;
 }
 
+button.intro_button {
+    background-color: darkorange;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    width: 100%;
+}
+
 .dc-select-menu,
 .number-display {
     font-size: 25px;
@@ -45,4 +53,8 @@ td.dc-table-label {
 
 td, th {
     padding: 10px;
+}
+
+.dc-chart g.row text {
+    fill: black;
 }
