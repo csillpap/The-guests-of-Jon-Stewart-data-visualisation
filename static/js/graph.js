@@ -71,6 +71,7 @@ function makeGraphs(error, projectsJson) {
 	// Charts
    occupationGroupChart = dc.pieChart("#occupation-group-chart");
    specificOccupationChart = dc.rowChart("#specific-occupation-chart");
+   topGuestsChart = dc.rowChart("#top-guests-chart");
    var topOccupationGroupsChart = dc.seriesChart("#top-occupation-groups-chart");
    var totalNumberOfGuestsND = dc.numberDisplay("#number-guests-nd");
    var totalNumberOfShowsND = dc.numberDisplay("#number-shows-nd");
@@ -162,9 +163,21 @@ function makeGraphs(error, projectsJson) {
        .group(specificOccupations)
        .xAxis().ticks(4);
 
+
+   topGuestsChart
+       .width(500)
+       .height(350)
+       .rowsCap(10)
+       .othersGrouper(false)
+       .elasticX(true)
+       .dimension(guestDim)
+       .group(guestGroup)
+       .xAxis().ticks(4);
+
+
    topOccupationGroupsChart
-		.width(1000)
-		.height(400)
+		.width(970)
+		.height(350)
 		.x(d3.scale.linear().domain(extent))
 		.brushOn(false)
 		.xAxisLabel("Years")
