@@ -47,6 +47,9 @@ function makeGraphs(error, projectsJson) {
    var specificOccupations = specificOccupationDim.group();
    var guestGroup = guestDim.group();
    var showGroup = showDim.group();
+   var guests_by_year = yearDim.group().reduceCount(function (d) {
+       return d["Raw_Guest_List"];
+   });
 
    // filter DailyShowGuests_data for Acting, Media, Politician
 	var DailyShowGuests_data_filtered = [];
@@ -67,11 +70,13 @@ function makeGraphs(error, projectsJson) {
 	var topOccupationByYearGroup = topOccupationByYearDim.group();
 	var extent = d3.extent(DailyShowGuests_data_filtered, function(d){return d.YEAR;});
 
+	var extent2 = d3.extent(DailyShowGuests_data, function(d){return d.YEAR;});
 
 	// Charts
    occupationGroupChart = dc.pieChart("#occupation-group-chart");
    specificOccupationChart = dc.rowChart("#specific-occupation-chart");
    topGuestsChart = dc.rowChart("#top-guests-chart");
+   guestsByYearChart = dc.lineChart("#guests-by-year-chart");
    var topOccupationGroupsChart = dc.seriesChart("#top-occupation-groups-chart");
    var totalNumberOfGuestsND = dc.numberDisplay("#number-guests-nd");
    var totalNumberOfShowsND = dc.numberDisplay("#number-shows-nd");
@@ -149,6 +154,7 @@ function makeGraphs(error, projectsJson) {
        .radius(130)
        .innerRadius(20)
        .transitionDuration(1500)
+       .slicesCap(6)
        .dimension(occupationGroupDim)
        .group(occupationGroup);
 
@@ -174,6 +180,16 @@ function makeGraphs(error, projectsJson) {
        .group(guestGroup)
        .xAxis().ticks(4);
 
+   guestsByYearChart
+       .width(500)
+       .height(350)
+       .dimension(yearDim)
+       .group(guests_by_year)
+       .brushOn(true)
+       .renderArea(true)
+       .x(d3.scale.linear().domain(extent2))
+       .y(d3.scale.linear().domain([100, 200]))
+       .yAxisLabel("Number of guests");
 
    topOccupationGroupsChart
 		.width(970)
