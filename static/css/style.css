@@ -58,3 +58,8 @@ td, th {
 .dc-chart g.row text {
     fill: black;
 }
+
+footer > p {
+    font-size: 10px;
+    color: white;
+}
