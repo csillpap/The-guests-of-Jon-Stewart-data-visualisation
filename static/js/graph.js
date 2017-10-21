@@ -189,7 +189,7 @@ function makeGraphs(error, projectsJson) {
        .renderArea(true)
        .colors(["#EB773D"])
        .x(d3.scale.linear().domain(extent2))
-       .y(d3.scale.linear().domain([100, 200]))
+       .elasticY(true)
        .renderHorizontalGridLines(true)
        .renderVerticalGridLines(true)
        .yAxisLabel("Number of guests");
