@@ -224,7 +224,7 @@ function makeGraphs(error, projectsJson) {
                format: function(d) {return d["GoogleKnowlege_Occupation"]}
            }
        ])
-       .size(25);
+       .size(DailyShowGuests_data.length);
 
    show_datatable
        .dimension(showDim2)
@@ -239,7 +239,7 @@ function makeGraphs(error, projectsJson) {
                format: function(d) {return d["GoogleKnowlege_Occupation"]}
            }
        ])
-       .size(25);
+       .size(DailyShowGuests_data.length);
 
    dc.renderAll();
 }

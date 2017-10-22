@@ -16,7 +16,6 @@ body.application {
     text-align: center;
     font-family: "Josefin Sans";
     color: white;
-    height: 600px;
     padding: 60px 30px;
     line-height: 1.8;
     background-color: #001749;
@@ -62,4 +61,13 @@ td, th {
 footer > p {
     font-size: 10px;
     color: white;
+    margin-top: 30px;
+}
+
+div#guest-datatable.dc-chart,
+div#show-datatable.dc-chart {
+    background-color: white;
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 30px;
 }
