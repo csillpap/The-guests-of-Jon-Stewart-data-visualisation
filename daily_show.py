@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'DailyShow')
-COLLECTION_NAME = 'project'
+COLLECTION_NAME = 'projectstream2'
 
 
 @app.route('/')
@@ -40,7 +40,7 @@ def dailyshow_guests():
 
     # Open a connection to MongoDB using a with statement such that the
     # connection will be closed as soon as we exit the with statement
-    with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
+    with MongoClient(MONGO_URI) as conn:
         collection = conn[DBS_NAME][COLLECTION_NAME]
         # Retrieve a result set only with the fields defined in FIELDS
         # and limit the the results to 55000
