@@ -58,10 +58,13 @@ td, th {
     fill: black;
 }
 
-footer > p {
-    font-size: 10px;
-    color: white;
+footer {
     margin-top: 30px;
+}
+footer > p {
+    font-size: 8px;
+    color: white;
+    margin: 0px;
 }
 
 div#guest-datatable.dc-chart,
