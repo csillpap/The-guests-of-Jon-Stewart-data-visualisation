@@ -1,5 +1,9 @@
 # The Guests Of Jon Stewart Data Visualisation
 
+http://daily-show.herokuapp.com/
+
+![Screenshot](screenshot.png)
+
 ## Overview
 
 A visual representation of data about the guests of Jon Stewart in The Daily Show. The data is represented in the form of interactive charts
